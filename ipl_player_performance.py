@@ -1,5 +1,4 @@
 import random
-import os,subprocess
 import requests
 from bs4 import BeautifulSoup
 
@@ -94,24 +93,45 @@ valueDictBowling = {}
 columnNamesBatting = []
 columnNamesBowling = []
 def main():
+    file1 = open("player_batting_performance.csv", "a")
+    file2 = open("player_bowling_performance.csv", "a")
+    id1 = 1
+    id2 = 1
     #retrieve data from 2008 to 2018
-    for year in range(2008,2018):
+    for year in range(2008,2019):
         #get the website url for each year
         urlBatting="https://www.iplt20.com/stats/"+str(year)+"/most-runs"
         urlBowling="https://www.iplt20.com/stats/"+str(year)+"/most-wickets"
         valueDictBatting[year] = get_information1(urlBatting)
         valueDictBowling[year] = get_information2(urlBowling)
+    temp = "id,year"
+    for column in columnNamesBatting:
+        temp = temp+","+column
+    file1.write(temp+"\n")
+    temp = "id,year"
+    for column in columnNamesBowling:
+        temp = temp + "," + column
+    file2.write(temp + "\n")
+
     print("=========================Batting===========================")
-    print("column names:")
-    print(columnNamesBatting)
-    for number in range(2008,2018):
-        print("data for year "+str(number)+":")
-        print(valueDictBatting[number])
+    for number in range(2008,2019):
+        year = str(number)
+        for players in valueDictBatting[number]:
+            temp =str(id1)+","+year
+            for info in players:
+                temp = temp + ","+info
+            file1.write(temp+"\n")
+            id1 = id1+1
     print("=========================Bowling===========================")
-    print("column names:")
-    print(columnNamesBowling)
-    for number in range(2008,2018):
-        print("data for year "+str(number)+":")
-        print(valueDictBowling[number])
+    for number in range(2008,2019):
+        year = str(number)
+        for players in valueDictBowling[number]:
+            temp =str(id2)+","+year
+            for info in players:
+                temp = temp + ","+info
+            file2.write(temp+"\n")
+            id2 = id2+1
+    file1.close()
+    file2.close()
 if __name__ == '__main__':
     main()

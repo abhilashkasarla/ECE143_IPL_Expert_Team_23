@@ -1,5 +1,4 @@
 import random
-import os,subprocess
 import requests
 from bs4 import BeautifulSoup
 
@@ -46,23 +45,39 @@ def get_information(url):
         values.pop(0)
         tableForm = values.pop(len(values)-1)
         for value in values:
-            tempValues.append(value.text)
+            temp = value.text
+            while "\n\n" in temp:
+                temp = temp.replace("\n\n","\n")
+            temp = temp.replace("\n","",1)
+            tempValues.append(temp.split("\n")[0].replace(",",""))
         actualValues.append(tempValues)
     return actualValues
 
 valueDict = {}
 columnNames = []
 def main():
+    file = open("team_performance.csv", "a")
+    id = 1
     #retrieve data from 2008 to 2018
-    for number in range(2008,2018):
+    for number in range(2008,2019):
         #get the website url for each year
         url = "https://www.iplt20.com/archive/"+str(number)
         valueDict[number] = get_information(url)
-    print("column names:")
-    print(columnNames)
-    for number in range(2008,2018):
-        print("data for year "+str(number)+":")
-        print(valueDict[number])
-
+    temp = "id,year"
+    for name in columnNames:
+        temp = temp+","+name
+    file.write(temp+"\n")
+    for number in range(2008,2019):
+        year = str(number)
+        for values in valueDict[number]:
+            temp = str(id) + "," + year
+            for value in values:
+                temp = temp+","+value
+            file.write(temp+"\n")
+            id = id + 1
+    file.close()
 if __name__ == '__main__':
     main()
+
+
+

@@ -1,7 +1,4 @@
-import random
-import os,subprocess
 import requests
-from bs4 import BeautifulSoup
 import json
 user_agents = [
     'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11',
@@ -17,22 +14,132 @@ user_agents = [
 # all column names stored in columnNames
 valueDict = {}
 def main():
-    #year2018: match id 7894 to 7953
+    file = open("toss_result.csv", "a")
+    id = 1
+    file.write("id,year,team1,team2,winner,action\n")
+    # year2018: match id 7894 to 7953
     for matchId in range(7894,7953):
+        year = 2018
         url = "https://cricketapi.platform.iplt20.com//fixtures/"+str(matchId)+"/scoring"
         r = requests.get(url)
         # print(r.json())
         tempDict = json.loads(r.text)
         team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
         team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
-        result = tempDict["matchInfo"]["additionalInfo"]["toss.elected"]
+        winner = "NaN"
+        action = "NaN"
+        if "toss.winner" in tempDict["matchInfo"]["additionalInfo"]:
+            winner = tempDict["matchInfo"]["additionalInfo"]["toss.winner"]
+            if " bat" in tempDict["matchInfo"]["additionalInfo"]["toss.elected"]:
+                action = "bat"
+            else:
+                action = "field"
+        tempStr = str(id)+","+str(year)+","+team1+","+team2+","+winner+","+action+"\n"
+        file.write(tempStr)
+        id = id+1
     #year2017: match id 5839 to 5898
+    for matchId in range(5839,5898):
+        year = 2017
+        url = "https://cricketapi.platform.iplt20.com//fixtures/"+str(matchId)+"/scoring"
+        r = requests.get(url)
+        # print(r.json())
+        tempDict = json.loads(r.text)
+        team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
+        team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
+        winner = "NaN"
+        action = "NaN"
+        if "toss.winner" in tempDict["matchInfo"]["additionalInfo"]:
+            winner = tempDict["matchInfo"]["additionalInfo"]["toss.winner"]
+            if " bat" in tempDict["matchInfo"]["additionalInfo"]["toss.elected"]:
+                action = "bat"
+            else:
+                action = "field"
+        tempStr = str(id)+","+str(year)+","+team1+","+team2+","+winner+","+action+"\n"
+        file.write(tempStr)
+        id = id+1
     #year2016: match id 4042 to 4101
+    for matchId in range(4042,4101):
+        year = 2016
+        url = "https://cricketapi.platform.iplt20.com//fixtures/"+str(matchId)+"/scoring"
+        r = requests.get(url)
+        # print(r.json())
+        tempDict = json.loads(r.text)
+        team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
+        team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
+        winner = "NaN"
+        action = "NaN"
+        if "toss.winner" in tempDict["matchInfo"]["additionalInfo"]:
+            winner = tempDict["matchInfo"]["additionalInfo"]["toss.winner"]
+            if " bat" in tempDict["matchInfo"]["additionalInfo"]["toss.elected"]:
+                action = "bat"
+            else:
+                action = "field"
+        tempStr = str(id)+","+str(year)+","+team1+","+team2+","+winner+","+action+"\n"
+        file.write(tempStr)
+        id = id+1
     #year2015: match id 3226 to 3285
+    for matchId in range(3226,3285):
+        year = 2015
+        url = "https://cricketapi.platform.iplt20.com//fixtures/"+str(matchId)+"/scoring"
+        r = requests.get(url)
+        # print(r.json())
+        tempDict = json.loads(r.text)
+        team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
+        team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
+        winner = "NaN"
+        action = "NaN"
+        if "toss.winner" in tempDict["matchInfo"]["additionalInfo"]:
+            winner = tempDict["matchInfo"]["additionalInfo"]["toss.winner"]
+            if " bat" in tempDict["matchInfo"]["additionalInfo"]["toss.elected"]:
+                action = "bat"
+            else:
+                action = "field"
+        tempStr = str(id)+","+str(year)+","+team1+","+team2+","+winner+","+action+"\n"
+        file.write(tempStr)
+        id = id+1
     #year2014: match id 2424 to 2483
-    #year2013: match id 606 to 692
+    for matchId in range(2424,2483):
+        year = 2014
+        url = "https://cricketapi.platform.iplt20.com//fixtures/"+str(matchId)+"/scoring"
+        r = requests.get(url)
+        # print(r.json())
+        tempDict = json.loads(r.text)
+        team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
+        team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
+        winner = "NaN"
+        action = "NaN"
+        if "toss.winner" in tempDict["matchInfo"]["additionalInfo"]:
+            winner = tempDict["matchInfo"]["additionalInfo"]["toss.winner"]
+            if " bat" in tempDict["matchInfo"]["additionalInfo"]["toss.elected"]:
+                action = "bat"
+            else:
+                action = "field"
+        tempStr = str(id)+","+str(year)+","+team1+","+team2+","+winner+","+action+"\n"
+        file.write(tempStr)
+        id = id+1
+
     #year2012: match id 2 to 77
-    #for year 2011 or earlier all records had been cleared
+    for matchId in range(2,77):
+        year = 2012
+        url = "https://cricketapi.platform.iplt20.com//fixtures/"+str(matchId)+"/scoring"
+        r = requests.get(url)
+        # print(r.json())
+        tempDict = json.loads(r.text)
+        team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
+        team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
+        winner = "NaN"
+        action = "NaN"
+        if "toss.winner" in tempDict["matchInfo"]["additionalInfo"]:
+            winner = tempDict["matchInfo"]["additionalInfo"]["toss.winner"]
+            if " bat" in tempDict["matchInfo"]["additionalInfo"]["toss.elected"]:
+                action = "bat"
+            else:
+                action = "field"
+        tempStr = str(id)+","+str(year)+","+team1+","+team2+","+winner+","+action+"\n"
+        file.write(tempStr)
+        id = id+1
+    #for year 2011 or earlier all records had been cleared, data for year 2013 has bad JSON format
+    file.close()
 
 
 if __name__ == '__main__':
