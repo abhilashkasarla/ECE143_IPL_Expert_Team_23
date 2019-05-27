@@ -162,7 +162,7 @@ def wicket_taking(data, bowler='bowler', wicket='dismissal_kind', out_kind=None,
     balls = data[bowler].value_counts().reset_index()
     balls = balls.rename(columns={bowler: 'balls', 'index': bowler})
 
-    wickets = data[data[wicket].isin(out_kind)]['bowler'].value_counts().reset_index()
+    wickets = data[data[wicket].isin(out_kind)][bowler].value_counts().reset_index()
     wickets = wickets.rename(columns={bowler: 'wickets', 'index': bowler})
 
     # Merge Data into single Frame
@@ -173,7 +173,28 @@ def wicket_taking(data, bowler='bowler', wicket='dismissal_kind', out_kind=None,
 
     # Beautify
     wickets.sort_values('wtaken', ascending=asc, inplace=True)
-    wickets.rename(columns={'balls': 'Number of Balls Thrown', 'wickets': 'Number of Wickets taken',
+    wickets = wickets.rename(columns={'balls': 'Number of Balls Thrown', 'wickets': 'Number of Wickets taken',
                             'wtaken': 'Wicket Taking Ability'})
 
     return wickets
+
+
+"""
+Section III: Match Metrics
+"""
+
+
+def get_wins(data, winner='winner'):
+    """
+    Returns the Number of wins of a given team
+    :param data: Data from which to calculate
+    :param winner: Winner Column
+    :return: PD Dataframe with wins
+    """
+
+    assert isinstance(data, pd.DataFrame), "Data format is invalid"
+    data.drop(data.columns.difference([winner]), 1, inplace=True)
+    wins = data[winner].value_counts().reset_index()
+    wins = wins.rename(columns={'index': 'Winner', winner: 'Matches Won'})
+
+    return wins
