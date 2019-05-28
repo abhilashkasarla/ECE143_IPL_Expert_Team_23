@@ -62,6 +62,10 @@ def main():
         temp = temp+","+str(year)
     file.write(temp+"\n")
 
+
+    yearAverageDict = {}
+    for year in range(2008, 2020):
+        yearAverageDict[year] = "0+0"
     #start writing in the actual data
     for team in teamNames:
         temp = str(id)+","+team
@@ -74,12 +78,23 @@ def main():
                 #tempList[0] will be sum of age
                 #tempList[1] will be number of players
                 #calculate the average age
+                tempStr = yearAverageDict[year]
+                tempList2 = tempStr.split("+")
+                #collect information for all player ages in that year
+                yearAverageDict[year] = str(int(tempList[0])+int(tempList2[0]))+"+"+str(int(tempList[1])+int(tempList2[1]))
                 temp = temp+"," + str(int(tempList[0])/int(tempList[1]))
             #only if this team did not play in that year
             else:
                 temp = temp + ","+"NaN"
         file.write(temp+"\n")
         id = id + 1
+    #calculate the average player age for that year (all teams)
+    temp = "15,average"
+    for year in range(2008, 2020):
+        tempStr = yearAverageDict[year]
+        tempList = tempStr.split("+")
+        temp = temp + "," + str(int(tempList[0]) / int(tempList[1]))
+    file.write(temp+"\n")
     #finish writing the data
     file.close()
 
