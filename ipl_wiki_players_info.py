@@ -1,7 +1,17 @@
 import random
 import requests
 from bs4 import BeautifulSoup
-
+'''
+In this file, we scrape all past/current player information from wikipedia
+https://en.wikipedia.org/wiki/List_of_Indian_Premier_League_players
+which contains a table for player information
+we also added a column for players' birthday by accessing their personal page
+on wikipedia also, the link is from href attribute inside the table for
+each player row
+Data processing is also needed since some players' personal webpages are missing
+and it takes really long time to finish all these many requests and it's possible to
+have timeout error
+'''
 user_agents = [
     'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11',
     'Opera/9.25 (Windows NT 5.1; U; en)',
@@ -14,18 +24,19 @@ user_agents = [
  	'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0'
 ]
 # all column names stored in columnNames
-
 def get_information(url):
     '''
     :param url: url for the overall information for certain year
-    :return: return the 8 team overall performance stored inside a list (actualValues)
+    :return: return the list of player informations (also represented as list)
     '''
     actualValues = []
     headers = {'User-Agent': user_agents[random.randint(0, 8)]}
+    #send out URL request and get the data
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     html = r.text.encode("utf8")
     soup = BeautifulSoup(html, "lxml")
+    #process the webpage data, get the target section
     ex = soup.find('table', attrs={'class': "wikitable sortable"});
     playerResults = ex.findAll('tr')
     columnInformation = playerResults.pop(0).findAll("th")
@@ -44,6 +55,7 @@ def get_information(url):
         #get the wiki link for that player
         if player.find('a', href=True)!=None:
             playerURL = "https://en.wikipedia.org/"+player.find('a', href=True)['href']
+            #use the wiki link to get that player's birthday
             r2 = requests.get(playerURL, headers=headers)
             if r2!=None and r2.status_code!=404:
                 r2.raise_for_status()
@@ -59,13 +71,15 @@ def get_information(url):
         else:
             tempValues.append("NaN")
 
-
+        #write the remaining data into the information list
         for value in values:
             temp = value.text.replace("\xa0","").replace("\n","")
             if temp!="":
                 tempValues.append(temp)
             else:
                 tempValues.append("NaN")
+        #for some player they didn't attend recent years' competition
+        #fill those block with "NaN"
         while len(tempValues)!=len(columnNames):
             tempValues.append("NaN");
         actualValues.append(tempValues)
