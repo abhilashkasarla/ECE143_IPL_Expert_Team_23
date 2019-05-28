@@ -1,0 +1,49 @@
+id,Player[7],Nationality[¦Å],First,Last,Mat,Team(s),Won,Lost,Tied,NR,Win%
+1,Mahendra Singh Dhoni,India,2008,2019,174,Chennai Super Kings+Rising Pune Super Giants,104,69,0,1,60.11
+2,Rohit Sharma,India,2013,2019,104,Mumbai Indians,60,42,2,0,58.65
+3,Gautam Gambhir,India,2009,2017,129,Kolkata Knight Riders+Delhi Daredevils,71,57,1,0,55.03
+4,Murali Vijay,India,2016,2016,8,Kings XI Punjab,3,5,0,0,37.5
+5,Adam Gilchrist,Australia,2008,2013,74,Kings XI Punjab+Deccan Chargers,35,39,0,0,47.29
+6,Shane Warne,Australia,2008,2011,55,Rajasthan Royals,30,24,1,0,54.54
+7,Virat Kohli,India,2011,2019,110,Royal Challengers Bangalore,49,55,2,4,47.16
+8,Virender Sehwag,India,2008,2015,53,Delhi Daredevils+Kings XI Punjab,28,25,0,0,52.83
+9,Sachin Tendulkar,India,2008,2011,51,Mumbai Indians,30,21,0,0,58.82
+10,Rahul Dravid,India,2008,2013,48,Rajasthan Royals+Royal Challengers Bangalore,22,26,0,0,45.83
+11,Kumar Sangakkara,Sri Lanka,2010,2013,47,Sunrisers Hyderabad+Deccan Chargers+Kings XI Punjab,15,30,2,0,31.91
+12,Yuvraj Singh,India,2008,2011,43,Pune Warriors India+Kings XI Punjab,21,21,0,1,48.83
+13,Sourav Ganguly,India,2008,2012,42,Pune Warriors India+Kolkata Knight Riders,17,25,0,0,40.48
+14,George Bailey,Australia,2014,2015,36,Kings XI Punjab,16,19,1,0,44.44
+15,Mahela Jayawardene,Sri Lanka,2010,2013,30,Delhi Daredevils+Kochi Tuskers Kerala+Kings XI Punjab,10,19,1,0,33.33
+16,Anil Kumble,India,2009,2010,26,Royal Challengers Bangalore,15,11,0,0,57.69
+17,Daniel Vettori,New Zealand,2011,2012,22,Royal Challengers Bangalore,12,10,0,0,54.54
+18,Shane Watson,Australia,2008,2017,24,Rajasthan Royals+Royal Challengers Bangalore,8,13,2,1,39.13
+19,Harbhajan Singh,India,2008,2012,20,Mumbai Indians,10,10,0,0,50.00
+20,Kevin Pietersen,England,2009,2014,17,Royal Challengers Bangalore+Delhi Daredevils,3,14,0,0,17.64
+21,David Warner,Australia,2014,2017,47,Delhi Daredevils+Sunrisers Hyderabad,25,22,0,0,57.00
+22,Jean Paul Duminy,South Africa,2015,2017,16,Delhi Daredevils,6,9,0,1,36.12
+23,Brendon McCullum,New Zealand,2009,2016,14,Kolkata Knight Riders+Gujarat Lions,3,10,1,0,21.43
+24,Steve Smith,Australia,2012,2019,25,Pune Warriors India+Rajasthan Royals+Rising Pune Supergiant,17,8,0,0,68.00
+25,David Hussey,Australia,2012,2013,12,Kings XI Punjab,6,6,0,0,50.00
+26,Cameron White,Australia,2011,2013,12,Sunrisers Hyderabad+Deccan Chargers,7,5,0,0,58.33
+27,Shikhar Dhawan,India,2014,2014,10,Sunrisers Hyderabad,4,6,0,0,40.00
+28,Aaron Finch,Australia,2013,2013,10,Pune Warriors India,2,8,0,0,20.00
+29,Dinesh Karthik,India,2010,2019,22,Kolkata Knight Riders+Delhi Daredevils,11,11,0,0,50.00
+30,V. V. S. Laxman,India,2008,2008,6,Deccan Chargers,1,5,0,0,16.66
+31,Ricky Ponting,Australia,2013,2013,6,Mumbai Indians,3,3,0,0,50.00
+32,Angelo Mathews,Sri Lanka,2013,2013,5,Pune Warriors India,1,4,0,0,20.00
+33,Shaun Pollock,South Africa,2008,2008,4,Mumbai Indians,3,1,0,0,75.00
+34,Darren Sammy,West Indies,2014,2014,4,Sunrisers Hyderabad,2,2,0,0,50.00
+35,James Hopes,Australia,2011,2011,3,Delhi Daredevils,0,2,0,1,0.00
+36,Glenn Maxwell,Australia,2017,2017,14,Kings XI Punjab,7,7,0,0,50.00
+37,Suresh Raina,India,2010,2017,32,Chennai Super Kings+Gujarat Lions,16,16,1,0,50.00
+38,Dwayne Bravo,West Indies,2010,2010,1,Mumbai Indians,0,1,0,0,0.00
+39,Parthiv Patel,India,2011,2011,1,Kochi Tuskers Kerala,0,1,0,0,0.00
+40,Ross Taylor,New Zealand,2013,2013,1,Pune Warriors India,1,0,0,0,100.00
+41,Zaheer Khan,India,2016,2017,23,Delhi Daredevils,10,13,0,0,43.5
+42,Ajinkya Rahane,India,2017,2018,16,Rising Pune Supergiants+Rajasthan Royals,7,9,0,0,43.75
+43,Kane Williamson,New Zealand,2018,2018,26,Sunrisers Hyderabad,14,11,1,0,55.76
+44,Ravichandran Ashwin,India,2018,2019,28,Kings XI Punjab,12,16,0,0,42.85
+45,Shreyas Iyer,India,2018,2019,24,Delhi Capitals,13,10,1,0,56.25
+46,David Miller,South Africa,2016,2016,6,Kings XI Punjab,1,5,0,0,16.66
+47,Kieron Pollard,West Indies,2019,2019,1,Mumbai Indians,1,0,0,0,100.00
+48,Bhuvneshwar Kumar,India,2019,2019,6,Sunrisers Hyderabad,2,4,0,0,33.33

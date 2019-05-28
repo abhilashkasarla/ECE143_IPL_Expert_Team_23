@@ -1,7 +1,16 @@
 import random
 import requests
 from bs4 import BeautifulSoup
-
+'''
+In ipl_match_result.py we get the match-by-match team performance 
+In this file, however, we will get the overall result from the website for each year
+www.iplt20.com 
+inside the archieve section
+The main idea is to use beautifulsoup to send out url request to process
+the html webpage response
+Result data will be stored into team_performance.csv
+'''
+#Possible browser agents to use for beautifulsoup
 user_agents = [
     'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11',
     'Opera/9.25 (Windows NT 5.1; U; en)',
@@ -14,7 +23,6 @@ user_agents = [
  	'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0'
 ]
 # all column names stored in columnNames
-
 def get_information(url):
     '''
     :param url: url for the overall information for certain year
@@ -22,6 +30,8 @@ def get_information(url):
     '''
     actualValues = []
     headers = {'User-Agent': user_agents[random.randint(0, 8)]}
+    #send out the URL requests and processed the result html webpage using
+    #beautifulsoup
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     html = r.text.encode("utf8")
@@ -53,21 +63,30 @@ def get_information(url):
         actualValues.append(tempValues)
     return actualValues
 
+#global variable used to store information
+#valueDict will store information with year as key
 valueDict = {}
+#stores all possible column names (data categories)
 columnNames = []
 def main():
+    #start up the file for writing
     file = open("team_performance.csv", "a")
     id = 1
     #retrieve data from 2008 to 2018
     for number in range(2008,2019):
         #get the website url for each year
         url = "https://www.iplt20.com/archive/"+str(number)
+        #retrieve data
         valueDict[number] = get_information(url)
+    url = "https://www.iplt20.com/stats/2019"
+    valueDict[2019] = get_information(url)
     temp = "id,year"
+    #write column names
     for name in columnNames:
         temp = temp+","+name
     file.write(temp+"\n")
-    for number in range(2008,2019):
+    #write actual data
+    for number in range(2008,2020):
         year = str(number)
         for values in valueDict[number]:
             temp = str(id) + "," + year
@@ -75,6 +94,7 @@ def main():
                 temp = temp+","+value
             file.write(temp+"\n")
             id = id + 1
+    #finished writing
     file.close()
 if __name__ == '__main__':
     main()

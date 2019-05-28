@@ -1,21 +1,20 @@
 import requests
 import json
-user_agents = [
-    'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11',
-    'Opera/9.25 (Windows NT 5.1; U; en)',
-    'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
-    'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Kubuntu)',
-    'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:11.0) Gecko/20100101 Firefox/11.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:8.0.1) Gecko/20100101 Firefox/8.0.1',
-    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.151 Safari/535.19',
- 	'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0'
-]
-# all column names stored in columnNames
-valueDict = {}
+
+"""
+Collect match by match team performance from 2012 to 2018
+Process incomplete or missing datas
+write the result into match_result.csv
+The main idea is to use requests to send out url request to process
+the JSON response
+"""
+
 def main():
+    #get the file ready
     file = open("match_result.csv", "a")
     id = 1
+
+    #write the column names first
     file.write("id,year,team1,team2,match_result,match_winner,toss_winner,action\n")
     dataDict = {}
     #year2018: match id 7894 to 7953
@@ -40,9 +39,15 @@ def main():
     for year in dataDict:
         print("Processing year:"+str(year))
         for matchId in dataDict[year]:
+            #use matchId to get corresponding match information
             url = "https://cricketapi.platform.iplt20.com//fixtures/" + str(matchId) + "/scoring"
             r = requests.get(url)
-            # print(r.json())
+            #the result is in JSON format, better transform it to dictionary form for
+            #better data extraction
+
+            #extract data and process according to our logics
+            #the result Json is transformed to a dictionary tempDict
+            #for easy data extraction
             tempDict = json.loads(r.text)
             team1 = tempDict["matchInfo"]["teams"][0]["team"]["fullName"]
             team2 = tempDict["matchInfo"]["teams"][1]["team"]["fullName"]
