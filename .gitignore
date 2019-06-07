@@ -3,3 +3,5 @@ data/
 models/
 logs/
 .ipynb_checkpoints/
+__pycache__/
+./utilities/__pycache__/
