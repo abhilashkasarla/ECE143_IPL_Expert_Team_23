@@ -1,7 +1,7 @@
 # ECE 143 : IPL Team Peformance Analysis
 
 ## Team Members:
-- <Add Name Here>
+- Abhilash Kasarla (@akasarla)
 - Zicong Zhang
 - Shiqi Zhao (@s2zhao)
 - Siddhant Jain (@jsiddhant)
