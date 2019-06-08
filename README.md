@@ -3,7 +3,7 @@
 ## Team Members:
 - <Add Name Here>
 - <Add Name Here>
-- <Add Name Here>
+- Shiqi Zhao (@s2zhao)
 - Siddhant Jain (@jsiddhant)
 
 ## Description:
@@ -25,6 +25,7 @@ Root
 +----utilites
 |       |   metrics.py
 |       |   vis_funcs.py
+|       |   plots.py
 |
 |    main.py
 |    analyse_data.py
