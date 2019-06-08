@@ -12,6 +12,7 @@ Sections:
 Section 1: replace team names with their latest ones
 Section 2: provides the info of the winners over the years
 Section 3: computes the number of used players by teams across all years
+Section 4:     get the data required to compute the number of captains used by each plots
 '''
 
 def preprocess_team_names(df):
@@ -52,3 +53,28 @@ def get_used_players(ball_data):
     all_players = all_players.replace(short_names)
     used_players = all_players.groupby('team').agg({'match_id':pd.Series.nunique, 'player':pd.Series.nunique}).rename(columns=d)
     return used_players
+
+
+def get_captains_data():
+    '''
+    get the data required to compute the number of captains
+    used by each plots
+    '''
+    captains = pd.read_csv('./data/leader_wiki2.csv')
+    preprocess_team_names(captains)
+
+    teams = ['Royal Challengers Bangalore','Kings XI Punjab','Mumbai Indians','Kolkata Knight Riders',\
+                 'Chennai Super Kings','Delhi Capitals','Rajasthan Royals','Sunrisers Hyderabad']
+    captains = captains.loc[captains['team'].isin(teams)]
+    d = {'team':'team', 'name':'Number of captains'}
+    # all_players = all_players.replace(short_names)
+    captains = captains.groupby('team').agg({'name':pd.Series.nunique}).rename(columns=d)
+
+    teams_record = pd.read_csv('data/teams_record.csv')
+    teams_record.set_index('team', inplace=True)
+
+    captains = pd.concat([captains, teams_record], axis=1, sort=False)
+    captains.drop(columns=['matches', 'players used', 'seasons qualified', 'seasons played'], inplace=True)
+    captains.sort_values(by=['qualification rate'],inplace=True, ascending=False)
+
+    return captains
