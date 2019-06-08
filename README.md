@@ -1,6 +1,70 @@
-# ECE143_IPL_Expert_Team_23
+# ECE 143 : IPL Team Peformance Analysis
+
+## Team Members:
+- <Add Name Here>
+- Zicong Zhang
+- Shiqi Zhao (@s2zhao)
+- Siddhant Jain (@jsiddhant)
+
+## Description:
 To Analyze IPL data from 2008 to 2019 and to provide interesting insights into players attributes and Teams performance
-# Scraping data (By Zicong Zhang):
+
+## Dataset 
+
+Dataset was constructed from various sources including but not limited to scraping the official IPL website, Wikipedia
+and Cricsheet Datasets. 
+
+
+## File Structure (Update after finalizing)
+
+```
+Root
+|
++----data
+|
++----scrape
+|       |   ipl_match_result.py
+|       |   ipl_player_performance.py
+|       |   ipl_team_leader.py
+|       |   ipl_team_performance.py
+|       |   ipl_wiki_playerAge.py
+|       |   ipl_wiki_players_info.py
+|
++----utilites
+|       |   metrics.py
+|       |   vis_funcs.py
+|       |   plots.py
+|
+|    demo.ipynb
+|    demo.html
+|    
+|    
+|    
+```
+
+## Instructions on running the code
+The demo.ipynb notebook contains all our visualizations and all cells can be run to generate these. As the graphs are dynamic to get an idea of what they look like open demo.html in your browser. Follow the steps below to get the code running:
+
+* Clone this repository
+* Install any missing required packages
+* Open and run demo.ipynb cells to generate plots
+
+Additionally all our supporting utilities and scraping scripts can be used in a standalone manner to replicate our results. The files are described as follows:
+
+- metrics.py
+Calculate bowling batting and match metrics from dataframes
+
+-visualization.py
+Helper functions to create visualizations shown in demo notebook
+
+-plots.py
+Helper functions to create visualizations shown in demo notebook
+
+** Written and tested on Python version: Python 3.6.7 64-bit
+
+## Instructions on Scraping Data:
+
+# Scraping data:
 1) Most of the matches data and seasonal overviews comes from https://www.iplt20.com/ either under “Archive” or “Stats”
 We are getting more data from Wikipedia for players’ detailed information
 https://en.wikipedia.org/wiki/List_of_Indian_Premier_League_players 
@@ -45,3 +109,11 @@ players_wiki.csv
 use the players_wiki.csv to calculate the average for each team in each season into
 players_age_wiki.csv
 
+### Required packages
+
+1. numpy
+2. pandas
+3. matplotlib
+4. Plotly
+5. Bokeh
+6. Beautiful Soup
