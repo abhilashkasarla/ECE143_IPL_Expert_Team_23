@@ -27,29 +27,29 @@ Root
 |       |   vis_funcs.py
 |       |   plots.py
 |
-|    main.py
-|    analyse_data.py
-|    analyse_data_department_only.py
-|    Plot_Extent_of_overlap.py
-|    Plot_radar_chart.py
-|    Plot_ucsd_cse.py
-|    Plot_ucsd_ece.py
-|    Plot_department.py
-|    merge_industry.py
-|    Notebook_for_overview.ipynb
-
+|    demo.ipynb
+|    demo.html
+|    
+|    
+|    
 ```
 
 ## Instructions on running the code
+The demo.ipynb notebook contains all our visualizations and all cells can be run to generate these. As the graphs are dynamic to get an idea of what they look like open demo.html in your browser. Follow the steps below to get the code running:
 
-* Written and tested on Python version: Python 3.6.6 64-bit
+* Clone this repository
+* Install any missing required packages
+* Open and run demo.ipynb cells to generate plots
+
+Additionally all our supporting utilities and scraping scripts can be used in a standalone manner to replicate our results. 
+
+** Written and tested on Python version: Python 3.6.6 64-bit
+
 ### Required packages
 
 1. numpy
 2. pandas
 3. matplotlib
 4. Plotly
-5. COMPLETE
-6. -------
-7. --------
-8. -------
+5. Bokeh
+6. Beautiful Soup
