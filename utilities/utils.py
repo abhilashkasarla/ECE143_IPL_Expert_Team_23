@@ -60,7 +60,7 @@ def get_captains_data():
     get the data required to compute the number of captains
     used by each plots
     '''
-    captains = pd.read_csv('../data/leader_wiki2.csv')
+    captains = pd.read_csv('./data/leader_wiki2.csv')
     preprocess_team_names(captains)
 
     teams = ['Royal Challengers Bangalore','Kings XI Punjab','Mumbai Indians','Kolkata Knight Riders',\
