@@ -51,20 +51,10 @@ The demo.ipynb notebook contains all our visualizations and all cells can be run
 
 Additionally all our supporting utilities and scraping scripts can be used in a standalone manner to replicate our results. The files are described as follows:
 
-- metrics.py
-Calculate bowling batting and match metrics from dataframes
-
--visualization.py
-Helper functions to create visualizations shown in demo notebook
-
--plots.py
-Helper functions to create visualizations shown in demo notebook
-
 ** Written and tested on Python version: Python 3.6.7 64-bit
 
 ## Instructions on Scraping Data:
 
-# Scraping data:
 1) Most of the matches data and seasonal overviews comes from https://www.iplt20.com/ either under “Archive” or “Stats”
 We are getting more data from Wikipedia for players’ detailed information
 https://en.wikipedia.org/wiki/List_of_Indian_Premier_League_players 
@@ -80,6 +70,8 @@ import csv
 6) For table elements, treat them as list with index.
 7) For JSON elements, transform to dictionary and use key string to get value.
 8) All data value will be processed (e.g remove extra space, deal with comma, handle for empty value or invalid response data), and then saved into .csv files for later evaluation.
+
+## About Files
 
 Brief Introduction to all files (check comments inside each files for more detailed introduction)
 
@@ -109,6 +101,16 @@ players_wiki.csv
 use the players_wiki.csv to calculate the average for each team in each season into
 players_age_wiki.csv
 
+-metrics.py
+Calculate bowling batting and match metrics from dataframes
+
+-visualization.py
+Helper functions to create visualizations shown in demo notebook
+
+-plots.py
+Helper functions to create visualizations shown in demo notebook
+
+
 ### Required packages
 
 1. numpy
@@ -117,3 +119,4 @@ players_age_wiki.csv
 4. Plotly
 5. Bokeh
 6. Beautiful Soup
+7. Cufflinks
