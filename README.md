@@ -43,7 +43,7 @@ The demo.ipynb notebook contains all our visualizations and all cells can be run
 
 Additionally all our supporting utilities and scraping scripts can be used in a standalone manner to replicate our results. 
 
-** Written and tested on Python version: Python 3.6.6 64-bit
+** Written and tested on Python version: Python 3.6.7 64-bit
 
 ### Required packages
 
