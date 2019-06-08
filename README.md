@@ -119,3 +119,4 @@ Helper functions to create visualizations shown in demo notebook
 4. Plotly
 5. Bokeh
 6. Beautiful Soup
+7. Cufflinks
