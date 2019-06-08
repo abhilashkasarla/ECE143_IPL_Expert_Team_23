@@ -45,5 +45,3 @@ players_wiki.csv
 use the players_wiki.csv to calculate the average for each team in each season into
 players_age_wiki.csv
 
--ipl_wiki_playerAge.py
-use players_wiki.csv generated before and calculate the 
